@@ -32,11 +32,7 @@ describe('lazy-bouncer routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
-  
-  afterAll(() => {
-    pool.end();
-  });
-  
+
   it('creates a new user', async () => {
     const res = await request(app).post('/api/v1/users').send(mockUser);
     const { firstName, lastName, email } = mockUser;
@@ -87,5 +83,7 @@ describe('lazy-bouncer routes', () => {
   });
 });
 
-
+afterAll(() => {
+  pool.end();
+});
 // woo passed all tests 
